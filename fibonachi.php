@@ -1,0 +1,62 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Regular exp test</title>
+    </head>
+
+    <body style="font-family:Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;">
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <h2>In console:</h2>
+            <ul>
+                <li>random() // random number 0-100</li>
+                <li>random(i) // array of 'i' radom numbers</li>
+                <li>fibonacci(i) // count in fibonacci until 'i'</li>
+            </ul>
+
+    <script>
+    
+    	document.addEventListener("DOMContentLoaded", function(){
+
+
+
+    	});
+
+        //returns a random number | an array of random numbers
+    	function random(times){
+            if (times===undefined) {
+                return (Math.round(Math.random()*100))
+            } else {
+        		var arr = [];
+        		for (var i = 0; i < times; i++){
+        			arr.push(Math.round(Math.random()*100));
+        		}
+        		return arr;
+            }
+    	}
+
+        // count fibonacci until argument
+        function fibonacci(until,curNum,addNum){
+            var add = addNum | 1,
+            number = curNum | 0,
+            arr = [number];
+            ficci(until,number,add, arr);
+            return arr;
+        }
+
+        function ficci(until,curNum,addNum,arr){
+            if (until>curNum){
+                var newNum = curNum+addNum;
+                arr.push(newNum);
+                ficci(until, newNum, curNum, arr);
+            }
+        }
+
+
+    </script>
+    </body>
+</html>
