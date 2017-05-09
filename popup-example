@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Popup</title>
+</head>
+<body>
+
+<style>
+  .wrapper {max-width:1190px; margin:40px auto; padding:0 20px;}
+  .popup-bg {position:fixed; top:0; left:0; width:100%; height:100%; background-color: rgba(0,0,0,.5);}
+  .popup {opacity:0; pointer-events: none; transition:.5s;}
+  .popup.open {opacity:1; pointer-events: auto;}
+  .popup-box {max-width:500px; margin:20vh auto 0; height:50vh; padding:20px; border-radius:10px; -webkit-box-shadow: 5px 5px 30px rgba(0,0,0,.7);
+  box-shadow: 5px 5px 30px rgba(0,0,0,.7); background-color: #ebebeb; position: relative;}
+  [data-type=image] .popup-box {max-width:90%; max-height:90vh; width:100%; height:auto; position:absolute; top:50%;
+    left:50%; transform:translate(-50%,-50%); margin:auto; padding:0; border-radius:0; -webkit-box-shadow: 0px 0px 30px rgba(0,0,0,.7);
+  box-shadow: 0px 0px 30px rgba(0,0,0,.7); font-size:0;}
+  [data-type=image] .popup-box button {position:absolute; top:20px; right:20px; display: inline-block; background-color: rgba(0,0,0,.7); color:#fff; padding:5px 10px; border:0; outline:0;}
+  [data-type=image] img {max-width:100%; max-height:100%;}
+  button {cursor:pointer;}
+
+</style>
+
+<div class="wrapper">
+  <div class="content">
+    <h1>Popup test example</h1>
+    <button data-destination="text-example">Open text popup</button>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae laboriosam ea neque aperiam, minus, aut commodi natus maiores provident atque explicabo est nostrum inventore at dolorum perferendis et tempore hic asperiores quibusdam quas nisi? Dolores, quae tempora consequuntur earum laboriosam inventore, necessitatibus maxime et numquam nisi molestias cumque minima fuga!</p>
+    <button data-destination="image-example">Open image popup</button>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci iusto delectus similique. Reiciendis vitae vel quod sint natus cupiditate consequuntur laborum quis aut nisi autem aperiam cum dolores, asperiores rerum aliquam consectetur impedit veritatis debitis id libero dicta, quos iste. Libero adipisci eum eligendi culpa, nobis quas officiis similique voluptatibus, repudiandae recusandae commodi est sint voluptas ducimus quod suscipit. Officia.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis quibusdam dolorem, voluptas quas explicabo eveniet illo aliquam nemo suscipit cumque!</p>
+
+    <p>Cheers!</p>
+  </div>
+  <div id="text-example" class="popup" data-type="text">
+    <div class="popup-bg">
+      <div class="popup-box">
+        <div class="popup-content">
+          <h2>Hello! Please consider following text</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel aperiam ab, nihil veniam odio vero, ullam debitis minus accusamus at. Consequatur velit dolorem ullam repudiandae accusamus officiis, totam quam expedita saepe. Esse dolorem quam eius consequatur voluptatem tempore eos, voluptatum, eum? Velit laboriosam ullam blanditiis.</p>
+          <button data-destination="text-example">Close [x]</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="image-example" class="popup" data-type="image">
+    <div class="popup-bg">
+      <div class="popup-box">
+        <div class="popup-content">
+          <img src="https://wallpaperscraft.com/image/fog_trees_forest_thicket_84863_1920x1080.jpg" alt="forest">
+          <button data-destination="image-example">Close [x]</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded',function(){
+    for (button of document.querySelectorAll('button')) {
+      button.addEventListener('click', function(){
+        console.log('#'+this.dataset.destination);
+        document.querySelector('#'+this.dataset.destination).classList.toggle('open');
+      });
+    }
+  });
+
+</script>
+
+</body>
+</html>
